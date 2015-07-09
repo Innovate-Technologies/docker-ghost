@@ -10,6 +10,8 @@ RUN wget https://ghost.org/zip/ghost-0.6.4.zip
 RUN unzip ghost-0.6.4.zip
 RUN rm -f ghost-0.6.4.zip
 RUN npm install --production
+RUN mv config.example.js config.js
+RUN sed -i 's/127.0.0.1/0.0.0.0/g' config.js
 RUN sed -i 's/2368/80/g' config.js
 
 EXPOSE 80
